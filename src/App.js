@@ -11,7 +11,7 @@ export default function MelbetAffiliatesLanding() {
 
   try {
     await fetch(
-      "https://script.google.com/macros/s/AKfycbzp5Gg8yyOZFKRiFl3-qo9E2fb6GrPR4eMdtngvN3ORZuXpfNwZBy6iP8VqYZH5Q_YY/exec",
+      "https://script.google.com/macros/s/AKfycbxmIgUeHOfH3xkEpwTK7U8BoGDqp3frUzK_QhyIn75gbUSUr66sYtgDP_UKYsKE5KrZ/exec",
       {
         method: "POST",
         body: data, // gửi trực tiếp FormData
