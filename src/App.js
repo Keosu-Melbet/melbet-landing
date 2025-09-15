@@ -5,30 +5,25 @@ export default function MelbetAffiliatesLanding() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      telegram: form.telegram.value,
-    };
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
 
-    try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbzp5Gg8yyOZFKRiFl3-qo9E2fb6GrPR4eMdtngvN3ORZuXpfNwZBy6iP8VqYZH5Q_YY/exec",
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      alert("✅ Thông tin đã được gửi thành công!");
-      form.reset();
-    } catch (error) {
-      alert("❌ Có lỗi xảy ra, vui lòng thử lại!");
-      console.error(error);
-    }
-  };
+  try {
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzp5Gg8yyOZFKRiFl3-qo9E2fb6GrPR4eMdtngvN3ORZuXpfNwZBy6iP8VqYZH5Q_YY/exec",
+      {
+        method: "POST",
+        body: data, // gửi trực tiếp FormData
+      }
+    );
+    alert("✅ Thông tin đã được gửi thành công!");
+    form.reset();
+  } catch (error) {
+    alert("❌ Có lỗi xảy ra, vui lòng thử lại!");
+    console.error(error);
+  }
+};
 
   // (giữ nguyên các array features, steps, earning, payments, faqs như bạn đã gửi ban đầu)
 
