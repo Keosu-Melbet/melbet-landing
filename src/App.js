@@ -240,4 +240,33 @@ export default function App() {
           <form onSubmit={(e) => { e.preventDefault(); alert('Your details have been submitted (demo form).'); }} className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className
+                <label className="block text-sm font-medium text-zinc-700">Full name</label>
+                <input required type="text" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 text-sm focus:border-amber-400 focus:ring-amber-400"/>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-zinc-700">Email</label>
+                <input required type="email" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 text-sm focus:border-amber-400 focus:ring-amber-400"/>
+              </div>
+            </div>
+            <div className="mt-4">
+              <label className="block text-sm font-medium text-zinc-700">Telegram / WhatsApp (optional)</label>
+              <input type="text" className="mt-1 w-full rounded-xl border border-zinc-300 px-3 py-2 text-sm focus:border-amber-400 focus:ring-amber-400"/>
+            </div>
+            <button type="submit" className="mt-6 w-full rounded-xl bg-amber-400 hover:bg-amber-500 text-black py-3 font-semibold shadow">Submit Details</button>
+          </form>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-zinc-200 bg-zinc-50 py-10">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-xl bg-black grid place-items-center text-amber-400 font-bold">M</div>
+            <span className="font-bold">Melbet Affiliates</span>
+          </div>
+          <div className="text-xs text-zinc-500">© {new Date().getFullYear()} Melbet Affiliates. All rights reserved.</div>
+        </div>
+      </footer>
+    </div>
+  );
+}
