@@ -76,6 +76,8 @@ export default function MelbetAffiliatesLanding() {
             <button onClick={() => scrollTo('earn')} className="hover:text-amber-600">Earning methods</button>
             <button onClick={() => scrollTo('payments')} className="hover:text-amber-600">Payments</button>
             <button onClick={() => scrollTo('faq')} className="hover:text-amber-600">FAQ</button>
+            <button onClick={() => scrollTo('features')}>Features</button>
+            <a href="/blog">Blog</a>
           </div>
           <a href="#register" className="inline-flex items-center gap-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-black px-4 py-2 font-semibold shadow-sm transition">Register Now</a>
         </div>
