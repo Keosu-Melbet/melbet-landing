@@ -4,7 +4,6 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
 import Head from 'next/head'
-import BlogLayout from '../../components/BlogLayout'
 
 export async function getStaticPaths() {
   const files = fs.readdirSync('posts')
@@ -33,16 +32,16 @@ export async function getStaticProps({ params }) {
 
 export default function BlogPost({ title, description, date, contentHtml }) {
   return (
-    <BlogLayout>
+    <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <article className="prose lg:prose-xl mx-auto py-8">
-        <h1>{title}</h1>
-        <p className="text-sm text-gray-500">{date}</p>
-        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-      </article>
-    </BlogLayout>
+      <main className="max-w-4xl mx-auto px-4 py-16">
+        <h1 className="text-3xl font-bold mb-2">{title}</h1>
+        <p className="text-sm text-gray-500 mb-6">{date}</p>
+        <div className="prose" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      </main>
+    </>
   )
 }
