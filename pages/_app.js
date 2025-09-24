@@ -1,5 +1,10 @@
-import { useRouter } from 'next/router';
+import '@/styles/globals.css'
+import { useRouter } from 'next/router'
 
-if (router.pathname === '/blog') {
-  // Không nên redirect hoặc return null
+function MyApp({ Component, pageProps }) {
+  const router = useRouter()
+
+  return <Component {...pageProps} key={router.asPath} />
 }
+
+export default MyApp
