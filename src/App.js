@@ -1,15 +1,17 @@
-import BlogLayout from './components/BlogLayout';
 import './index.css';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col items-center">
+      {/* Header */}
       <header className="text-center p-8">
         <h1 className="text-4xl font-bold text-yellow-400">Melbet Affiliates</h1>
-        <p className="mt-4 text-lg">Tham gia ngay – Kiếm tiền cùng Melbet</p>
+        <p className="mt-4 text-lg text-gray-300">Tham gia ngay – Kiếm tiền cùng Melbet</p>
       </header>
 
-      <main className="flex flex-col items-center">
+      {/* Main content */}
+      <main className="flex flex-col items-center w-full px-4">
+        {/* CTA Button */}
         <a
           href="https://melbet.com"
           className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg text-xl font-semibold shadow-lg transition"
@@ -17,19 +19,25 @@ export default function App() {
           Đăng ký ngay
         </a>
 
+        {/* Form gửi Google Sheets */}
         <form
-          action="#"
-          className="mt-8 flex flex-col space-y-4 bg-gray-800 p-6 rounded-xl w-80 shadow-lg"
+          action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"
+          method="POST"
+          className="mt-8 flex flex-col space-y-4 bg-gray-800 p-6 rounded-xl w-full max-w-sm shadow-lg"
         >
           <input
+            name="name"
             type="text"
             placeholder="Họ và tên"
             className="p-3 rounded bg-gray-700 text-white outline-none"
+            required
           />
           <input
+            name="email"
             type="email"
             placeholder="Email"
             className="p-3 rounded bg-gray-700 text-white outline-none"
+            required
           />
           <button
             type="submit"
@@ -38,20 +46,26 @@ export default function App() {
             Gửi thông tin
           </button>
         </form>
+
+        {/* Blog WordPress nhúng */}
+        <section className="mt-16 w-full max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-yellow-400 mb-6 text-center">
+            Blog Melbet Affiliates
+          </h2>
+          <div className="border border-yellow-400 rounded-xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://blog.melbetsaffiliates.com"
+              width="100%"
+              height="800"
+              style={{ border: 'none' }}
+              title="Melbet Blog"
+            />
+          </div>
+        </section>
       </main>
-      <main>...</main>
 
-{/* Nhúng blog WordPress */}
-<iframe
-  src="https://blog.melbetsaffiliates.com"
-  width="100%"
-  height="1600"
-  style={{ border: 'none' }}
-  title="Melbet Blog"
-/>
-
-
-      <footer className="mt-12 text-gray-400">
+      {/* Footer */}
+      <footer className="mt-12 text-gray-400 text-sm text-center py-6 w-full">
         © 2025 Melbet Affiliates. All rights reserved.
       </footer>
     </div>
