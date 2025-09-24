@@ -50,10 +50,6 @@ export default function App() {
   title="Melbet Blog"
 />
 
-<footer>...</footer>
-     
-
-      <BlogLayout />
 
       <footer className="mt-12 text-gray-400">
         © 2025 Melbet Affiliates. All rights reserved.
