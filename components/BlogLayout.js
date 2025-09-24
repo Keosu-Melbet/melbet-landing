@@ -1,28 +1,42 @@
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-export default function BlogLayout({ children }) {
+export default function BlogLayout() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('https://blog.melbetsaffiliates.com/wp-json/wp/v2/posts?per_page=12')
+      .then(res => res.json())
+      .then(data => setPosts(data))
+      .catch(err => console.error('Lỗi tải blog:', err));
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white text-gray-800">
-      <header className="bg-primary text-white py-4 px-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Afiliate Magazine</h1>
-        <Link
-          href="https://melbetsaffiliates.com"
-          className="text-sm underline hover:text-yellow-300 transition"
-        >
-          ← Về trang chính
-        </Link>
-      </header>
-
-      <main className="max-w-4xl mx-auto px-4">{children}</main>
-
-     <footer className="bg-gray-100 text-center py-6 mt-12 text-sm text-gray-600">
-  <div className="mb-2">
-    <a
-      href="https://blog.melbetsaffiliates.com/blog/"
-      className="text-yellow-600 hover:underline font-medium"
-    >
-      Truy cập Blog Cá Cược & Affiliate
-    </a>
-  </div>
-  <p>© 2025 Melbet Affiliates. All rights reserved.</p>
-</footer>
+    <section className="bg-black text-white py-16 px-6">
+      <h2 className="text-4xl font-bold text-yellow-400 mb-10 text-center">
+        Tin tức & Mẹo cược từ Blog Melbet
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {posts.map(post => (
+          <div key={post.id} className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-yellow-400 transition">
+            <h3
+              className="text-xl font-semibold text-yellow-300 mb-4"
+              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+            />
+            <div
+              className="text-white text-sm mb-4"
+              dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+            />
+            <a
+              href={post.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-yellow-400 underline hover:text-yellow-300"
+            >
+              Đọc tiếp →
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
