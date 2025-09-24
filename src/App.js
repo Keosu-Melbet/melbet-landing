@@ -21,7 +21,7 @@ export default function App() {
 
         {/* Form gửi Google Sheets */}
         <form
-          action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"
+          action="https://script.google.com/macros/s/AKfycbzp5Gg8yyOZFKRiFl3-qo9E2fb6GrPR4eMdtngvN3ORZuXpfNwZBy6iP8VqYZH5Q_YY/exec"
           method="POST"
           className="mt-8 flex flex-col space-y-4 bg-gray-800 p-6 rounded-xl w-full max-w-sm shadow-lg"
         >
