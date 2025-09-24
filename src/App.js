@@ -39,6 +39,19 @@ export default function App() {
           </button>
         </form>
       </main>
+      <main>...</main>
+
+{/* Nhúng blog WordPress */}
+<iframe
+  src="https://blog.melbetsaffiliates.com"
+  width="100%"
+  height="1600"
+  style={{ border: 'none' }}
+  title="Melbet Blog"
+/>
+
+<footer>...</footer>
+     
 
       <BlogLayout />
 
