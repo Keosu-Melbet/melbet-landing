@@ -1,15 +1,12 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div>
-      <h1>Welcome to Melbet Landing</h1>
-      <p>This is the main page deployed on Vercel.</p>
-      <Link href="/blog">
-        <button style={{ marginTop: "20px", padding: "10px 20px", background: "blue", color: "white" }}>
-          Go to Blog
-        </button>
+      <h1>Chào mừng đến với Melbet Affiliates</h1>
+      <Link href="https://blog.melbetsaffiliates.com/blog" className="text-yellow-500 underline">
+        Truy cập Blog Cá Cược
       </Link>
     </div>
-  )
+  );
 }
