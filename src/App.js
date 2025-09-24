@@ -6,7 +6,9 @@ export default function App() {
       {/* Header */}
       <header className="text-center p-8">
         <h1 className="text-4xl font-bold text-yellow-400">Melbet Affiliates</h1>
-        <p className="mt-4 text-lg text-gray-300">Tham gia ngay – Kiếm tiền cùng Melbet</p>
+        <p className="mt-4 text-lg text-gray-300">
+          Join now and start earning weekly commissions
+        </p>
       </header>
 
       {/* Main content */}
@@ -16,26 +18,26 @@ export default function App() {
           href="https://melbet.com"
           className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg text-xl font-semibold shadow-lg transition"
         >
-          Đăng ký ngay
+          Register Now
         </a>
 
-        {/* Form gửi Google Sheets */}
+        {/* Registration Form */}
         <form
-          action="https://script.google.com/macros/s/AKfycbzp5Gg8yyOZFKRiFl3-qo9E2fb6GrPR4eMdtngvN3ORZuXpfNwZBy6iP8VqYZH5Q_YY/exec"
+          action="https://script.google.com/macros/s/AKfycbxmIgUeHOfH3xkEpwTK7U8BoGDqp3frUzK_QhyIn75gbUSUr66sYtgDP_UKYsKE5KrZ/exec"
           method="POST"
           className="mt-8 flex flex-col space-y-4 bg-gray-800 p-6 rounded-xl w-full max-w-sm shadow-lg"
         >
           <input
             name="name"
             type="text"
-            placeholder="Họ và tên"
+            placeholder="Full Name"
             className="p-3 rounded bg-gray-700 text-white outline-none"
             required
           />
           <input
             name="email"
             type="email"
-            placeholder="Email"
+            placeholder="Email Address"
             className="p-3 rounded bg-gray-700 text-white outline-none"
             required
           />
@@ -43,14 +45,14 @@ export default function App() {
             type="submit"
             className="bg-yellow-400 hover:bg-yellow-500 text-black py-3 rounded-lg font-semibold"
           >
-            Gửi thông tin
+            Submit
           </button>
         </form>
 
-        {/* Blog WordPress nhúng */}
+        {/* Embedded Blog Section */}
         <section className="mt-16 w-full max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-yellow-400 mb-6 text-center">
-            Blog Melbet Affiliates
+            Melbet Affiliates Blog
           </h2>
           <div className="border border-yellow-400 rounded-xl overflow-hidden shadow-lg">
             <iframe
