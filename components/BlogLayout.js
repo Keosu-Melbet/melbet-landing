@@ -16,6 +16,9 @@ export default function BlogLayout({ children }) {
       <main className="max-w-4xl mx-auto px-4">{children}</main>
 
       <footer className="bg-gray-100 text-center py-4 mt-12 text-sm text-gray-500">
+      <a href="https://blog.melbetsaffiliates.com/blog/" className="hover:underline">
+  Blog Cá Cược & Affiliate
+</a>
         © 2025 Afiliate Blog. All rights reserved.
       </footer>
     </div>
