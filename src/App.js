@@ -1,3 +1,5 @@
+import BlogLayout from './components/BlogLayout';
+
 export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col items-center justify-center">
@@ -36,6 +38,9 @@ export default function App() {
           </button>
         </form>
       </main>
+
+      {/* Tích hợp blog WordPress */}
+      <BlogLayout />
 
       <footer className="mt-12 text-gray-400">
         © 2025 Melbet Affiliates. All rights reserved.
