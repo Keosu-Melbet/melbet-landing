@@ -1,4 +1,5 @@
 import BlogLayout from './components/BlogLayout';
+import './index.css';
 
 export default function App() {
   return (
@@ -39,7 +40,6 @@ export default function App() {
         </form>
       </main>
 
-      {/* Tích hợp blog WordPress */}
       <BlogLayout />
 
       <footer className="mt-12 text-gray-400">
