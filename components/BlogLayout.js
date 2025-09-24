@@ -15,12 +15,14 @@ export default function BlogLayout({ children }) {
 
       <main className="max-w-4xl mx-auto px-4">{children}</main>
 
-      <footer className="bg-gray-100 text-center py-4 mt-12 text-sm text-gray-500">
-      <a href="https://blog.melbetsaffiliates.com/blog/" className="hover:underline">
-  Blog Cá Cược & Affiliate
-</a>
-        © 2025 Afiliate Blog. All rights reserved.
-      </footer>
-    </div>
-  );
-}
+     <footer className="bg-gray-100 text-center py-6 mt-12 text-sm text-gray-600">
+  <div className="mb-2">
+    <a
+      href="https://blog.melbetsaffiliates.com/blog/"
+      className="text-yellow-600 hover:underline font-medium"
+    >
+      Truy cập Blog Cá Cược & Affiliate
+    </a>
+  </div>
+  <p>© 2025 Melbet Affiliates. All rights reserved.</p>
+</footer>
