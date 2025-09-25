@@ -1,8 +1,118 @@
 import React from "react";
 
 export default function BlogLayout() {
+  const scrollTo = (id) => {
+    const handleSubmit = async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new URLSearchParams({
+    sheet: "partner", // tên tab trong Google Sheets
+    name: form.name.value,
+    email: form.email.value,
+    telegram: form.telegram.value,
+  });
+
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycb.../exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      },
+      body: formData,
+    });
+
+    const text = await res.text();
+    alert(text.toLowerCase().includes("success")
+      ? "✅ Submitted successfully!"
+      : "❌ Submission failed.");
+  } catch (err) {
+    alert("❌ Connection error.");
+  }
+};
+
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const features = [
+    {
+      title: "High Commission",
+      desc: "Flexible, performance-based rates.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6">
+          <path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm1 5v4h3v2h-3v4h-2v-4H8v-2h3V7h2Z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Weekly Payouts",
+      desc: "Clear, consistent weekly payment schedule.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6">
+          <path fill="currentColor" d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 14H5V8h14Zm-2-9H7V7h10Z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Multiple Withdrawals",
+      desc: "Crypto, bank transfer, Skrill, and more.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6">
+          <path fill="currentColor" d="M12 3 2 9l10 6 10-6Zm0 8.197L4.618 9 12 4.803 19.382 9ZM2 15l10 6 10-6-2-1.2L12 19.8 4 13.8Z" />
+        </svg>
+      ),
+    },
+  ];
+
+  const steps = [
+    { n: 1, title: "Create a free account", desc: "Fill your basic details and get started instantly." },
+    { n: 2, title: "Get your tracking link", desc: "Generate links and track performance from the dashboard." },
+    { n: 3, title: "Start promoting", desc: "Publish on YouTube / Telegram / Instagram or your website." },
+  ];
+
+  const earning = [
+    { title: "YouTube & TikTok", tip: "Review video + bonus code in the description." },
+    { title: "Instagram & Facebook", tip: "Quick reels + stories with a tracking link." },
+    { title: "Telegram Channels", tip: "Results posts & picks with a clear CTA." },
+    { title: "Websites & Blogs", tip: "SEO articles + smart banners." },
+  ];
+
+  const payments = ["Crypto", "Bank Transfer", "Skrill", "WebMoney", "Jeton", "More…"];
+
+  const faqs = [
+    { q: "Is it free to join?", a: "Yes. Joining is 100% free with no hidden fees." },
+    { q: "Do I need a website?", a: "Not required. You can work via YouTube, Telegram, or social media too." },
+    { q: "When do I get paid?", a: "Payouts are weekly according to internal policy and review." },
+    { q: "Which countries are supported?", a: "It's global; some regions may have local restrictions." },
+  ];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new URLSearchParams({
+      sheet: "partner",
+      name: form.name.value,
+      email: form.email.value,
+      telegram: form.telegram.value,
+    });
+
+    try {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbxmIgUeHOfH3xkEpwTK7U8BoGDqp3frUzK_QhyIn75gbUSUr66sYtgDP_UKYsKE5KrZ/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: formData,
+      });
+
+      const text = await res.text();
+      alert(text.includes("Success") ? "✅ Submitted successfully!" : "❌ Submission failed.");
+    } catch (err) {
+      alert("❌ Connection error.");
+    }
+  };
+
   return (
-    <div>
     export default function MelbetAffiliatesLanding() {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -46,42 +156,22 @@ export default function BlogLayout() {
   return (
     <div dir="ltr" className="min-h-screen bg-gradient-to-b from-zinc-50 to-white text-zinc-900">
       {/* NAVBAR */}
-     <nav className="sticky top-0 z-30 backdrop-blur bg-white/70 border-b border-zinc-200">
-  <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-    {/* Logo */}
-    <div className="flex items-center gap-2">
-      <div className="w-8 h-8 rounded-xl bg-black grid place-items-center text-amber-400 font-bold">M</div>
-      <span className="font-extrabold tracking-tight">Melbet Affiliates</span>
-    </div>
-
-    {/* Navigation buttons */}
-    <div className="hidden md:flex items-center gap-6 text-sm">
-      <button onClick={() => scrollTo('features')} className="hover:text-amber-600">Features</button>
-      <button onClick={() => scrollTo('pricing')} className="hover:text-amber-600">Pricing</button>
-      <button onClick={() => scrollTo('about')} className="hover:text-amber-600">About</button>
-      <button onClick={() => scrollTo('contact')} className="hover:text-amber-600">Contact</button>
-
-      {/* ✅ Blog WordPress link */}
-      <a
-        href="https://blog.melbetsaffiliates.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-amber-600"
-      >
-        Blog
-      </a>
-    </div>
-
-    {/* Register button */}
-    <a
-      href="#register"
-      className="inline-flex items-center gap-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-black px-4 py-2 font-semibold shadow-sm transition"
-    >
-      Register
-    </a>
-  </div>
-</nav>
-
+      <nav className="sticky top-0 z-30 backdrop-blur bg-white/70 border-b border-zinc-200">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-xl bg-black grid place-items-center text-amber-400 font-bold">M</div>
+            <span className="font-extrabold tracking-tight">Melbet Affiliates</span>
+          </div>
+          <div className="hidden md:flex items-center gap-6 text-sm">
+            <button onClick={() => scrollTo('features')} className="hover:text-amber-600">Features</button>
+            <button onClick={() => scrollTo('how')} className="hover:text-amber-600">How to join</button>
+            <button onClick={() => scrollTo('earn')} className="hover:text-amber-600">Earning methods</button>
+            <button onClick={() => scrollTo('payments')} className="hover:text-amber-600">Payments</button>
+            <button onClick={() => scrollTo('faq')} className="hover:text-amber-600">FAQ</button>
+          </div>
+          <a href="#register" className="inline-flex items-center gap-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-black px-4 py-2 font-semibold shadow-sm transition">Register Now</a>
+        </div>
+      </nav>
 
       {/* HERO */}
       <header className="relative overflow-hidden">
@@ -252,51 +342,129 @@ export default function BlogLayout() {
       </section>
 
       {/* REGISTER */}
-<form
-  onSubmit={async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new URLSearchParams({
-      sheet: "partner", // đổi nếu tab trong Google Sheets có tên khác
-      name: form.name.value,
-      email: form.email.value,
-      telegram: form.telegram.value,
-    });
-
-    try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycb.../exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        },
-        body: formData,
-      });
-
-      const text = await res.text();
-      alert(text.includes("Success") ? "✅ Submitted successfully!" : "❌ Submission failed.");
-    } catch (err) {
-      alert("❌ Connection error.");
-    }
-  }}
-  className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm"
->
-  <div className="grid sm:grid-cols-2 gap-4">
+<section id="register" className="max-w-7xl mx-auto px-4 py-16">
+  <div className="grid lg:grid-cols-2 gap-10 items-center">
     <div>
-      <label className="block text-sm text-zinc-600 mb-1">Full name</label>
-      <input name="name" required type="text" className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="e.g., John Smith" />
+      <h2 className="text-2xl sm:text-3xl font-extrabold">Ready to start?</h2>
+      <p className="text-zinc-600 mt-2">
+        Register via the official link or share your details and we'll reach out.
+      </p>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <a
+          href="https://melbet.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-xl bg-black text-amber-400 hover:text-white px-5 py-3 font-semibold shadow"
+        >
+          Go to official signup page
+        </a>
+        <button
+          onClick={() => scrollTo("how")}
+          className="rounded-xl border border-zinc-300 px-5 py-3 font-semibold hover:border-zinc-400"
+        >
+          See the steps
+        </button>
+      </div>
     </div>
-    <div>
-      <label className="block text-sm text-zinc-600 mb-1">Email</label>
-      <input name="email" required type="email" className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="you@email.com" />
-    </div>
-    <div className="sm:col-span-2">
-      <label className="block text-sm text-zinc-600 mb-1">Telegram (optional)</label>
-      <input name="telegram" type="text" className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400" placeholder="@username" />
-    </div>
+
+    {/* FORM DEMO */}
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        alert("Your details have been submitted (demo form).");
+      }}
+      className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm"
+    >
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm text-zinc-600 mb-1">Full name</label>
+          <input
+            required
+            type="text"
+            className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+            placeholder="e.g., John Smith"
+          />
+        </div>
+        <div>
+          <label className="block text-sm text-zinc-600 mb-1">Email</label>
+          <input
+            required
+            type="email"
+            className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+            placeholder="you@email.com"
+          />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="block text-sm text-zinc-600 mb-1">Telegram (optional)</label>
+          <input
+            type="text"
+            className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+            placeholder="@username"
+          />
+        </div>
+      </div>
+      <button
+        type="submit"
+        className="mt-4 w-full rounded-xl bg-amber-400 hover:bg-amber-500 text-black px-5 py-3 font-semibold"
+      >
+        Submit details
+      </button>
+      <p className="text-xs text-zinc-500 mt-3">
+        * Demo form for preview. Can be connected later to email/CRM.
+      </p>
+    </form>
   </div>
-  <button type="submit" className="mt-4 w-full rounded-xl bg-amber-400 hover:bg-amber-500 text-black px-5 py-3 font-semibold">Submit details</button>
-  <p className="text-xs text-zinc-500 mt-3">* Your details will be sent securely to our team.</p>
-</form>
+</section>
+
+    {/* FORM DEMO */}
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        alert("Your details have been submitted (demo form).");
+      }}
+      className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm"
+    >
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm text-zinc-600 mb-1">Full name</label>
+          <input
+            required
+            type="text"
+            className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+            placeholder="e.g., John Smith"
+          />
+        </div>
+        <div>
+          <label className="block text-sm text-zinc-600 mb-1">Email</label>
+          <input
+            required
+            type="email"
+            className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+            placeholder="you@email.com"
+          />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="block text-sm text-zinc-600 mb-1">Telegram (optional)</label>
+          <input
+            type="text"
+            className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+            placeholder="@username"
+          />
+        </div>
+      </div>
+      <button
+        type="submit"
+        className="mt-4 w-full rounded-xl bg-amber-400 hover:bg-amber-500 text-black px-5 py-3 font-semibold"
+      >
+        Submit details
+      </button>
+      <p className="text-xs text-zinc-500 mt-3">
+        * Demo form for preview. Can be connected later to email/CRM.
+      </p>
+    </form>
+  </div>
+</section>
+
         </div>
       </section>
 
@@ -325,6 +493,3 @@ export default function BlogLayout() {
   );
 }
 
-    </div>
-  );
-}
