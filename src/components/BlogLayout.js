@@ -39,7 +39,6 @@ export default function BlogLayout() {
     }
   };
 
-  // Dữ liệu tĩnh
   const features = [
     { title: "High Commission", desc: "Flexible, performance-based rates." },
     { title: "Weekly Payouts", desc: "Clear, consistent weekly payment schedule." },
@@ -142,136 +141,127 @@ export default function BlogLayout() {
       </section>
 
       {/* PAYMENTS */}
-<section id="payments" className="max-w-7xl mx-auto px-4 py-16">
-  <h2 className="text-3xl font-extrabold text-center">Payment & Withdrawal Methods</h2>
-  <p className="text-center text-zinc-600 mt-2">
-    Withdraw your earnings easily through multiple secure options.
-  </p>
-
-  <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-    {payments.map((method, i) => (
-      <div
-        key={i}
-        className="rounded-xl bg-amber-100 text-center text-amber-800 font-semibold py-3 shadow hover:shadow-md transition"
-      >
-        {method}
-      </div>
-    ))}
-  </div>
-
-  <div className="mt-6 text-center text-xs text-zinc-500">
-    * Availability may vary by country and local regulations.
-  </div>
-</section>
-
-{/* FAQ */}
-<section id="faq" className="max-w-3xl mx-auto px-4 py-16">
-  <h2 className="text-3xl font-extrabold text-center">Frequently Asked Questions</h2>
-  <div className="mt-8 divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white">
-    {faqs.map((item, idx) => (
-      <details key={idx} className="group p-5">
-        <summary className="cursor-pointer list-none flex items-center justify-between">
-          <span className="font-semibold">{item.q}</span>
-          <span className="transition group-open:rotate-180">⌄</span>
-        </summary>
-        <p className="mt-3 text-zinc-600 text-sm pl-1">{item.a}</p>
-      </details>
-    ))}
-  </div>
-</section>
-
-{/* REGISTER */}
-<section id="register" className="max-w-7xl mx-auto px-4 py-16">
-  <div className="grid lg:grid-cols-2 gap-10 items-center">
-    <div>
-      <h2 className="text-3xl font-extrabold">Ready to start?</h2>
-      <p className="text-zinc-600 mt-2">
-        Register via the official link or share your details and we'll reach out.
-      </p>
-      <div className="mt-6 flex flex-wrap gap-3">
-        <a
-          href="https://melbet.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-xl bg-black text-amber-400 hover:text-white px-5 py-3 font-semibold shadow"
-        >
-          Go to official signup page
-        </a>
-        <button
-          onClick={() => scrollTo("how")}
-          className="rounded-xl border border-zinc-300 px-5 py-3 font-semibold hover:border-zinc-400"
-        >
-          See the steps
-        </button>
-      </div>
-    </div>
-
-    <form onSubmit={handleSubmit} className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
-      <div className="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm text-zinc-600 mb-1">Full name</label>
-          <input
-            name="name"
-            required
-            type="text"
-            className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
-            placeholder="e.g., John Smith"
-          />
+      <section id="payments" className="max-w-7xl mx-auto px-4 py-16">
+        <h2 className="text-3xl font-extrabold text-center">Payment & Withdrawal Methods</h2>
+        <p className="text-center text-zinc-600 mt-2">Withdraw your earnings easily through multiple secure options.</p>
+        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {payments.map((method, i) => (
+            <div key={i} className="rounded-xl bg-amber-100 text-center text-amber-800 font-semibold py-3 shadow hover:shadow-md transition">
+              {method}
+            </div>
+          ))}
         </div>
-        <div>
-          <label className="block text-sm text-zinc-600 mb-1">Email</label>
-          <input
-            name="email"
-            required
-            type="email"
-            className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
-            placeholder="you@email.com"
-          />
+            <div className="mt-6 text-center text-xs text-zinc-500">
+          * Availability may vary by country and local regulations.
         </div>
-        <div className="sm:col-span-2">
-          <label className="block text-sm text-zinc-600 mb-1">Telegram (optional)</label>
-          <input
-            name="telegram"
-            type="text"
-            className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
-            placeholder="@username"
-          />
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="max-w-3xl mx-auto px-4 py-16">
+        <h2 className="text-3xl font-extrabold text-center">Frequently Asked Questions</h2>
+        <div className="mt-8 divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white">
+          {faqs.map((item, idx) => (
+            <details key={idx} className="group p-5">
+              <summary className="cursor-pointer list-none flex items-center justify-between">
+                <span className="font-semibold">{item.q}</span>
+                <span className="transition group-open:rotate-180">⌄</span>
+              </summary>
+              <p className="mt-3 text-zinc-600 text-sm pl-1">{item.a}</p>
+            </details>
+          ))}
         </div>
-      </div>
-      <button
-        type="submit"
-        className="mt-4 w-full rounded-xl bg-amber-400 hover:bg-amber-500 text-black px-5 py-3 font-semibold"
-      >
-        Submit details
-      </button>
-      <p className="text-xs text-zinc-500 mt-3">
-        * Your details will be sent securely to our team.
-      </p>
-    </form>
-  </div>
-</section>
+      </section>
 
-{/* CTA STICKY MOBILE */}
-<div className="md:hidden fixed bottom-4 inset-x-4 z-40">
-  <a
-    href="#register"
-    className="block text-center rounded-2xl bg-amber-400 text-black font-bold py-3 shadow-xl"
-  >
-    Register Now
-  </a>
-</div>
+      {/* REGISTER */}
+      <section id="register" className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl font-extrabold">Ready to start?</h2>
+            <p className="text-zinc-600 mt-2">
+              Register via the official link or share your details and we'll reach out.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="https://melbet.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl bg-black text-amber-400 hover:text-white px-5 py-3 font-semibold shadow"
+              >
+                Go to official signup page
+              </a>
+              <button
+                onClick={() => scrollTo("how")}
+                className="rounded-xl border border-zinc-300 px-5 py-3 font-semibold hover:border-zinc-400"
+              >
+                See the steps
+              </button>
+            </div>
+          </div>
 
-{/* FOOTER */}
-<footer className="border-t border-zinc-200 py-10">
-  <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div className="flex items-center gap-2 text-sm text-zinc-600">
-      <div className="w-8 h-8 rounded-xl bg-black grid place-items-center text-amber-400 font-bold">M</div>
-      <span>© 2025 Melbet Affiliates</span>
+          <form onSubmit={handleSubmit} className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm text-zinc-600 mb-1">Full name</label>
+                <input
+                  name="name"
+                  required
+                  type="text"
+                  className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  placeholder="e.g., John Smith"
+                />
+              </div>
+              <div>
+                <label className="block text-sm text-zinc-600 mb-1">Email</label>
+                <input
+                  name="email"
+                  required
+                  type="email"
+                  className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  placeholder="you@email.com"
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <label className="block text-sm text-zinc-600 mb-1">Telegram (optional)</label>
+                <input
+                  name="telegram"
+                  type="text"
+                  className="w-full rounded-xl border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  placeholder="@username"
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="mt-4 w-full rounded-xl bg-amber-400 hover:bg-amber-500 text-black px-5 py-3 font-semibold"
+            >
+              Submit details
+            </button>
+            <p className="text-xs text-zinc-500 mt-3">
+              * Your details will be sent securely to our team.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-zinc-200 py-10">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-sm text-zinc-600">
+            <div className="w-8 h-8 rounded-xl bg-black grid place-items-center text-amber-400 font-bold">M</div>
+            <span>© 2025 Melbet Affiliates</span>
+          </div>
+          <div className="text-sm text-zinc-500 flex items-center gap-4">
+            <a href="#" className="hover:text-zinc-800">Privacy Policy</a>
+            <a href="#" className="hover:text-zinc-800">Terms</a>
+            <a href="#" className="hover:text-zinc-800">Contact</a>
+          </div>
+        </div>
+      </footer>
     </div>
-    <div className="text-sm text-zinc-500 flex items-center gap-4">
-      <a href="#" className="hover:text-zinc-800">Privacy Policy</a>
-      <a href="#" className="hover:text-zinc-800">Terms</a>
-      <a href="#" className="hover:text-zinc-800">Contact</a>
-    </div>
-  </div>
-</footer>
+  );
+}
+
+
+
+
+
