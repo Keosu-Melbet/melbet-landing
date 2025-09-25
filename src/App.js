@@ -1,47 +1,99 @@
-import React from "react";
-import RegisterForm from "./components/RegisterForm";
+import React, { useState } from "react";
 
-function App() {
+export default function App() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Đang gửi...");
+
+    const payload = new URLSearchParams({
+      sheet: "partner",
+      name: formData.name,
+      email: formData.email,
+    });
+
+    try {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbzp5Gg8yyOZFKRiFl3-qo9E2fb6GrPR4eMdtngvN3ORZuXpfNwZBy6iP8VqYZH5Q_YY/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: payload,
+      });
+
+      const text = await res.text();
+      setStatus("✅ Gửi thành công!");
+    } catch (err) {
+      setStatus("❌ Lỗi kết nối!");
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white text-black">
-      {/* Navbar */}
-      <nav className="flex items-center justify-between px-6 py-4 shadow">
-        <div className="text-xl font-bold">Melbet Affiliates</div>
-        <ul className="flex space-x-6">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#how-to-join">How to Join</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li>
-            <a
-              href="https://blog.motekaaffiliates.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-red-600 font-semibold"
-            >
-              Blog
-            </a>
-          </li>
-          <li>
-            <a
-              href="#register"
-              className="bg-yellow-500 text-white px-4 py-2 rounded"
-            >
-              Register Now
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col items-center justify-center">
+      <header className="text-center p-8">
+        <h1 className="text-4xl font-bold text-yellow-400">Melbet Affiliates</h1>
+        <p className="mt-4 text-lg">Tham gia ngay – Kiếm tiền cùng Melbet</p>
+        <a
+          href="https://blog.motekaaffiliates.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block text-yellow-300 underline hover:text-yellow-400"
+        >
+          Truy cập blog WordPress
+        </a>
+      </header>
 
-      {/* Main content */}
-      <main className="p-6">
-        <h1 className="text-2xl font-bold mb-4">Chào mừng đến với hệ thống Affiliate Melbet</h1>
-        <p className="mb-6">Kiếm tiền dễ dàng cùng Keosu Melbet.</p>
+      <main className="flex flex-col items-center">
+        <a
+          href="https://melbet.com"
+          className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg text-xl font-semibold shadow-lg transition"
+        >
+          Đăng ký ngay
+        </a>
 
-        {/* Form */}
-        <RegisterForm />
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 flex flex-col space-y-4 bg-gray-800 p-6 rounded-xl w-80 shadow-lg"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Họ và tên"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="p-3 rounded bg-gray-700 text-white outline-none"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="p-3 rounded bg-gray-700 text-white outline-none"
+          />
+          <button
+            type="submit"
+            className="bg-yellow-400 hover:bg-yellow-500 text-black py-3 rounded-lg font-semibold"
+          >
+            Gửi thông tin
+          </button>
+          <p className="text-sm text-center text-gray-300">{status}</p>
+        </form>
       </main>
+
+      <footer className="mt-12 text-gray-400 text-sm">
+        © 2025 Melbet Affiliates. All rights reserved.
+      </footer>
     </div>
   );
 }
-
-export default App;
