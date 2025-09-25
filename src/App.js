@@ -12,16 +12,16 @@ export default function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Đang gửi...");
+    setStatus("Sending...");
 
     const payload = new URLSearchParams({
-      sheet: "partner",
+      sheet: "partner", // đổi nếu tab trong Google Sheets có tên khác
       name: formData.name,
       email: formData.email,
     });
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbzp5Gg8yyOZFKRiFl3-qo9E2fb6GrPR4eMdtngvN3ORZuXpfNwZBy6iP8VqYZH5Q_YY/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbxmIgUeHOfH3xkEpwTK7U8BoGDqp3frUzK_QhyIn75gbUSUr66sYtgDP_UKYsKE5KrZ/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -30,9 +30,13 @@ export default function App() {
       });
 
       const text = await res.text();
-      setStatus("✅ Gửi thành công!");
+      if (text.toLowerCase().includes("success")) {
+        setStatus("✅ Submitted successfully!");
+      } else {
+        setStatus("❌ Submission failed.");
+      }
     } catch (err) {
-      setStatus("❌ Lỗi kết nối!");
+      setStatus("❌ Connection error.");
     }
   };
 
@@ -40,14 +44,14 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col items-center justify-center">
       <header className="text-center p-8">
         <h1 className="text-4xl font-bold text-yellow-400">Melbet Affiliates</h1>
-        <p className="mt-4 text-lg">Tham gia ngay – Kiếm tiền cùng Melbet</p>
+        <p className="mt-4 text-lg">Join now – Earn money with Melbet</p>
         <a
           href="https://blog.melbetsaffiliates.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-block text-yellow-300 underline hover:text-yellow-400"
+          className="mt-2 inline-block text-yellow-300 underline hover:text-yellow-400"
         >
-          Truy cập blog WordPress
+          Visit our WordPress blog
         </a>
       </header>
 
@@ -56,7 +60,7 @@ export default function App() {
           href="https://melbet.com"
           className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg text-xl font-semibold shadow-lg transition"
         >
-          Đăng ký ngay
+          Register Now
         </a>
 
         <form
@@ -66,7 +70,7 @@ export default function App() {
           <input
             type="text"
             name="name"
-            placeholder="Họ và tên"
+            placeholder="Full Name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -75,7 +79,7 @@ export default function App() {
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
             required
@@ -85,9 +89,9 @@ export default function App() {
             type="submit"
             className="bg-yellow-400 hover:bg-yellow-500 text-black py-3 rounded-lg font-semibold"
           >
-            Gửi thông tin
+            Submit
           </button>
-          <p className="text-sm text-center text-gray-300">{status}</p>
+          <p className="text-sm text-center text-red-400">{status}</p>
         </form>
       </main>
 
