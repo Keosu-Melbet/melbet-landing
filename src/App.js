@@ -42,7 +42,7 @@ export default function App() {
         <h1 className="text-4xl font-bold text-yellow-400">Melbet Affiliates</h1>
         <p className="mt-4 text-lg">Tham gia ngay – Kiếm tiền cùng Melbet</p>
         <a
-          href="https://blog.motekaaffiliates.com"
+          href="https://blog.melbetsaffiliates.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 inline-block text-yellow-300 underline hover:text-yellow-400"
