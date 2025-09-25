@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 
-export default function BlogForm() {
+export default function RegisterForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     telegram: "",
   });
-
   const [status, setStatus] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,8 +39,8 @@ export default function BlogForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginTop: "2rem" }}>
-      <h2>Đăng ký Affiliate</h2>
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8 space-y-4">
+      <h2 className="text-xl font-bold">Đăng ký Affiliate</h2>
       <input
         type="text"
         name="name"
@@ -50,7 +48,8 @@ export default function BlogForm() {
         value={formData.name}
         onChange={handleChange}
         required
-      /><br /><br />
+        className="w-full p-2 border rounded"
+      />
       <input
         type="email"
         name="email"
@@ -58,18 +57,20 @@ export default function BlogForm() {
         value={formData.email}
         onChange={handleChange}
         required
-      /><br /><br />
+        className="w-full p-2 border rounded"
+      />
       <input
         type="text"
         name="telegram"
         placeholder="Telegram (nếu có)"
         value={formData.telegram}
         onChange={handleChange}
-      /><br /><br />
-      <button type="submit">Gửi đăng ký</button>
+        className="w-full p-2 border rounded"
+      />
+      <button type="submit" className="bg-yellow-500 px-4 py-2 rounded text-white">
+        Gửi đăng ký
+      </button>
       <p>{status}</p>
     </form>
   );
 }
-
-
